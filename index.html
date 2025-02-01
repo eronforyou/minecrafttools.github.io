@@ -46,6 +46,11 @@
         .content-section {
             display: none;
         }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -62,47 +67,38 @@
         <button class="menu-item" onclick="showContent('totemCreator')">Totem Oluşturucu</button>
     </div>
 
-    <div id="skinHeadFinder" class="content-section">
-    <h2>Skin Kafası Bulucu</h2>
-    <p>Bir Minecraft kullanıcı adı girin ve o oyuncunun kafasını görün.</p>
-    <input type="text" id="username" placeholder="Minecraft Kullanıcı Adı">
-    <button onclick="getSkinHead()">Göster</button>
-    <div id="headImages">
-        <h3>2D Avatar</h3>
-        <img id="avatar2D" src="" alt="2D Skin" style="display: none;">
-        <h3>3D Kafa</h3>
-        <img id="avatar3D" src="" alt="3D Kafa" style="display: none;">
-    </div>
-</div>
-
-
-        <div id="skinCreator" class="content-section">
-            <h2>Skin Oluşturucu</h2>
-            <p>Buraya Skin oluşturucu içerik gelecek.</p>
-        </div>
-
-        <div id="seedFinder" class="content-section">
-            <h2>Seed Araştırıcı</h2>
-            <p>Buraya Seed araştırıcı içerik gelecek.</p>
-        </div>
-
-        <div id="totemCreator" class="content-section">
-            <h2>Totem Oluşturucu</h2>
-            <p>Buraya Totem oluşturucu içerik gelecek.</p>
+    <div class="container" id="content">
+        <!-- Skin Kafası Bulucu -->
+        <div id="skinHeadFinder" class="content-section">
+            <h2>Skin Kafası Bulucu</h2>
+            <input type="text" id="username" placeholder="Minecraft Kullanıcı Adı">
+            <button onclick="getSkinHead()">Kafayı Göster</button>
+            <br>
+            <img id="skinHead" src="" alt="" style="display:none; width:100px; height:100px;">
         </div>
     </div>
 
     <script>
         function showContent(contentId) {
-            // Tüm bölümleri gizle
             let sections = document.querySelectorAll('.content-section');
             sections.forEach(section => {
                 section.style.display = 'none';
             });
 
-            // İlgili bölümü göster
             let activeSection = document.getElementById(contentId);
             activeSection.style.display = 'block';
+        }
+
+        function getSkinHead() {
+            let username = document.getElementById("username").value;
+            if (username) {
+                let skinURL = `https://mc-heads.net/avatar/${username}/100.png`;
+                let img = document.getElementById("skinHead");
+                img.src = skinURL;
+                img.style.display = "block";
+            } else {
+                alert("Lütfen bir Minecraft kullanıcı adı girin!");
+            }
         }
     </script>
 
