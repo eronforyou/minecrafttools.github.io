@@ -1,1 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Araçları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        #menu {
+            margin: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .menu-item {
+            background-color: #3498db;
+            padding: 15px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 150px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .menu-item:hover {
+            background-color: #2980b9;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        #content {
+            margin-top: 30px;
+        }
+        .content-section {
+            display: none;
+        }
+    </style>
+</head>
+<body>
 
+    <header>
+        <h1>Minecraft Araçları</h1>
+        <p>İstediğiniz aracı seçin!</p>
+    </header>
+
+    <div id="menu">
+        <button class="menu-item" onclick="showContent('skinHeadFinder')">Skin Kafası Bulucu</button>
+        <button class="menu-item" onclick="showContent('skinCreator')">Skin Oluşturucu</button>
+        <button class="menu-item" onclick="showContent('seedFinder')">Seed Araştırıcı</button>
+        <button class="menu-item" onclick="showContent('totemCreator')">Totem Oluşturucu</button>
+    </div>
+
+    <div id="skinHeadFinder" class="content-section">
+    <h2>Skin Kafası Bulucu</h2>
+    <p>Bir Minecraft kullanıcı adı girin ve o oyuncunun kafasını görün.</p>
+    <input type="text" id="username" placeholder="Minecraft Kullanıcı Adı">
+    <button onclick="getSkinHead()">Göster</button>
+    <div id="headImages">
+        <h3>2D Avatar</h3>
+        <img id="avatar2D" src="" alt="2D Skin" style="display: none;">
+        <h3>3D Kafa</h3>
+        <img id="avatar3D" src="" alt="3D Kafa" style="display: none;">
+    </div>
+</div>
+
+
+        <div id="skinCreator" class="content-section">
+            <h2>Skin Oluşturucu</h2>
+            <p>Buraya Skin oluşturucu içerik gelecek.</p>
+        </div>
+
+        <div id="seedFinder" class="content-section">
+            <h2>Seed Araştırıcı</h2>
+            <p>Buraya Seed araştırıcı içerik gelecek.</p>
+        </div>
+
+        <div id="totemCreator" class="content-section">
+            <h2>Totem Oluşturucu</h2>
+            <p>Buraya Totem oluşturucu içerik gelecek.</p>
+        </div>
+    </div>
+
+    <script>
+        function showContent(contentId) {
+            // Tüm bölümleri gizle
+            let sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // İlgili bölümü göster
+            let activeSection = document.getElementById(contentId);
+            activeSection.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
